@@ -18,7 +18,7 @@ In a javascript project:
 import mkvconf from 'mkvconf'
 import fs from 'fs'
 
-const body = fs.readFileSync('items.mkvconf', 'utf8')
+const body = fs.readFileSync('item.file', 'utf8')
 const data = mkconf.parse(body)
 console.log(data)
 ```
@@ -64,7 +64,7 @@ Parses to:
     }
   }],
   "comments": [
-    "// items.mkvconf"
+    "// item.file"
   ]
 }
 ```
@@ -102,7 +102,7 @@ Parses to:
     "icon": "assets/apple.png"
   }],
   "comments": [
-    "// fruit.mkvconf"
+    "// fruit.file"
   ]
 }
 ```
