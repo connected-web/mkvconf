@@ -131,6 +131,8 @@ Any line beginning with `[` and ending with `]` starts a new object group, with 
 
 Once the first object group has been created; any line that matches the regex `/^([A-z][A-z\d.]*)\s+(.*)/` will be considered a key value pair, and added to the last object group. Values are trimmed and parsed. Multi-line values are not supported. Additional spaces between the `key` and the `value` will be ignored.
 
+To ensure numbers are parsed as numbers, and booleans as booleans, values are passed through `JSON.parse()` - so you could get fancy and embed arrays, or more complex objects, provided they fit on one line.
+
 ### Blank lines
 
 Empty lines are ignored; i.e. anything line that when trimmed has a length of `0`.

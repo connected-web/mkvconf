@@ -24,7 +24,16 @@ function createObjectGroup (line, values, result, workingState) {
 function addKeyValuePair (line, values, result, workingState) {
   const [, key, value] = values
   if (workingState.object) {
-    workingState.object[key] = value.trim()
+    const keyPath = key.split('.')
+
+    let parent = workingState.object
+    while (keyPath.length > 1) {
+      const keyPart = keyPath.shift()
+      parent[keyPart] = parent[keyPart] || {}
+      parent = parent[keyPart]
+    }
+    parent[keyPath.shift()] = parseValue(value)
+    Object.assign(workingState.object, workingState.parent)
   } else {
     addComment(line, [], result, workingState)
   }
@@ -40,6 +49,17 @@ function parseLine (line, result, workingState) {
   }
   const match = matchers.filter(matcher => matcher.regex.test(line))[0]
   match.func(line, line.match(match.regex), result, workingState)
+}
+
+function parseValue (value) {
+  const str = (value + '').trim()
+  let result
+  try {
+    result = JSON.parse(str)
+  } catch (ex) {
+    result = str
+  }
+  return result
 }
 
 function parse (input) {
