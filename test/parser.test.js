@@ -9,4 +9,11 @@ describe('Parser', () => {
     const actual = mkvconf.parse(input)
     expect(actual).to.deep.equal(expected)
   })
+
+  it('should correctly parse the item fixture', () => {
+    const input = loadFixture('item.file')
+    const expected = loadFixture('item.json')
+    const actual = mkvconf.parse(input)
+    expect(actual).to.deep.equal(expected)
+  })
 })

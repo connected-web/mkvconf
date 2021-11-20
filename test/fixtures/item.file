@@ -1,12 +1,12 @@
 // item.file
 [Item]
 id             item-1
-property.name  Item One
+meta.name      Item One
 position.x     124
 position.y     523    
 
 [Item]
 id             item-2
-property.name  Item Two
+meta.name      Item Two
 position.x     224
 position.y     323     

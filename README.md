@@ -29,15 +29,15 @@ console.log(data)
 // item.file
 [Item]
 id             item-1
-property.name  Item One
+meta.name      Item One
 position.x     124
 position.y     523    
 
 [Item]
 id             item-2
-property.name  Item Two
+meta.name      Item Two
 position.x     224
-position.y     323      
+position.y     323  
 ```
 
 Parses to:
@@ -46,21 +46,21 @@ Parses to:
 {
   "Item": [{
     "id": "item-1",
-    "property": {
-      "name": "Item One",
-      "position": {
-        "x": 124,
-        "y": 523
-      }
+    "meta": {
+      "name": "Item One"
+    },
+    "position": {
+      "x": 124,
+      "y": 523
     }
   }, {
     "id": "item-2",
-    "property": {
-      "name": "Item Two",
-      "position": {
-        "x": 224,
-        "y": 323
-      }
+    "meta": {
+      "name": "Item Two"
+    },
+    "position": {
+      "x": 224,
+      "y": 323
     }
   }],
   "comments": [
