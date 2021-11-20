@@ -115,7 +115,7 @@ The parsing rules are designed to be very simple.
 
 Lines are parsed using the `\n` line break. 
 
-### Tabs and other spacing
+### Tabs and other spacing
 
 All lines are trimmed before matching; so extra spaces at the start or ends are ignored.
 

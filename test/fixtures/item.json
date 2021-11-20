@@ -1,0 +1,24 @@
+{
+  "Item": [{
+    "id": "item-1",
+    "property": {
+      "name": "Item One",
+      "position": {
+        "x": 124,
+        "y": 523
+      }
+    }
+  }, {
+    "id": "item-2",
+    "property": {
+      "name": "Item Two",
+      "position": {
+        "x": 224,
+        "y": 323
+      }
+    }
+  }],
+  "comments": [
+    "// items.mkvconf"
+  ]
+}

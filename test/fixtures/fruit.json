@@ -1,0 +1,16 @@
+{
+  "Fruit": [{
+    "name": "Banana",
+    "skin": "yellow",
+    "flesh": "beige",
+    "icon": "assets/banana.png"
+  }, {
+    "name": "Apple",
+    "skin": "green",
+    "flesh": "white",
+    "icon": "assets/apple.png"
+  }],
+  "comments": [
+    "// fruit.mkvconf"
+  ]
+}

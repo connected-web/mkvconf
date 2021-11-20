@@ -1,0 +1,12 @@
+// fruit.file
+[Fruit]
+name Banana
+skin yellow
+flesh beige
+icon assets/banana.png
+
+[Fruit]
+name Apple
+skin green
+flesh white
+icon assets/apple.png
