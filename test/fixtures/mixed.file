@@ -1,0 +1,50 @@
+// item.file
+
+ignorable line "thing"
+invalid.property No item group defined yet!
+
+[Relic]
+id             item-1
+meta.name      Item One
+position.x     124
+position.y     523    
+
+[Spaceship]
+pattern        escort
+path.start.q   q:3-2
+path.start.o   o:3-earth
+path.end.q     q:2-2
+path.end.o     o:14-jucranurn
+box.0.item     ref:Component:engine-sublight
+box.0.level    7
+box.0.health   100 
+box.1.item     ref:Component:engine-sublight
+box.1.level    7
+box.1.health   100 
+box.2.item     ref:Component:engine-sublight
+box.2.level    7
+box.2.health   100 
+
+[Component]
+id                  engine-sublight
+asset               "asssets/engine-sublight.png"
+component.function  ref:Function:acceleration
+component.value     24
+component.unit      ref:Unit:LN/s
+
+[Function]
+id             acceleration
+name           Acceleration
+decription     Applies an amount of acceleration force to a parent
+
+[Unit]
+id             LN/s
+name           Light Newton per second
+icon           circle
+description    A single light newton is the amount of energy required to accelerate a proton to the speed of light
+
+[Relic]
+id             item-2
+meta.name      Item Two
+position.x     224
+position.y     323     
