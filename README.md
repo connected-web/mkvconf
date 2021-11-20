@@ -125,11 +125,11 @@ Any line beginning with `//` is considered a comment, and is collected into an a
 
 ### Object Group
 
-Any line beginning with `[` and ending with `]` starts a new object group, with the group name based on the internals. Valid characters for the group name are Alpha-numeric with spaces and dashes matching the regex: `/[([A-z\d- ])+]/`; the object group name will be trimmed of any additional spacing.
+Any line beginning with `[` and ending with `]` starts a new object group, with the group name based on the internals. Valid characters for the group name are Alpha-numeric with spaces and dashes matching the regex: `/[([A-z\d- ]+)]/`; the object group name will be trimmed of any additional spacing.
 
 ### Key Value Pairs
 
-Once the first object group has been created; any line that matches the regex `/^([A-z][A-z\d.])\s+(.*)/` will be considered a key value pair, and added to the last object group. Values are trimmed and parsed. Multi-line values are not supported. Additional spaces between the `key` and the `value` will be ignored.
+Once the first object group has been created; any line that matches the regex `/^([A-z][A-z\d.]*)\s+(.*)/` will be considered a key value pair, and added to the last object group. Values are trimmed and parsed. Multi-line values are not supported. Additional spaces between the `key` and the `value` will be ignored.
 
 ### Blank lines
 
