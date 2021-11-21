@@ -1,7 +1,11 @@
 const { expect } = require('chai')
 const asyncExec = require('./helpers/asyncExec')
+const { version } = require('../package.json')
 
-const standardHelp = ['No help, only suffering!']
+const standardHelp = [
+  `[mkvconf] v${version} Help`,
+  '  help : Display a list of available commands'
+]
 
 describe('Command Line Interface', () => {
   describe('Help', () => {

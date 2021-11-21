@@ -1,10 +1,19 @@
+const { version } = require('../package.json')
+
 const commands = {
   help: help
 }
 
 function help ({ args, cwd }) {
-  console.log('No help, only suffering!')
+  console.log(`[mkvconf] v${version} Help`)
+  const info = Object.entries(commands).map(([key, { description }]) => {
+    return `  ${key} : ${description}`
+  })
+  info.forEach(line => {
+    console.log(line)
+  })
 }
+help.description = 'Display a list of available commands'
 
 async function run ({ command, args, cwd }) {
   const cmdFn = commands[command]
