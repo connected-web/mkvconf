@@ -11,3 +11,6 @@ kvp.bracket [value with brackets]
 ΚνΡ ναιμε with invalid key 
 kvp.greek ναιμε greek characters with valid key
 kvp.smiles 😀	😁	😂	😃	😄	😅	😆	😇	😈	😉	😊	😋	😌	😍	😎	😏
+
+// 😍 not a valid object key
+[😍]
