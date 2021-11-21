@@ -4,7 +4,8 @@ const { version } = require('../package.json')
 
 const standardHelp = [
   `[mkvconf] v${version} Help`,
-  '  help : Display a list of available commands'
+  '  help : Display a list of available commands',
+  '  lint [--fix] [file] : Check an input file for linting errors'
 ]
 
 describe('Command Line Interface', () => {
@@ -44,6 +45,21 @@ describe('Command Line Interface', () => {
       const expected = {
         stderr: [''],
         stdout: standardHelp
+      }
+      expect(actual).to.deep.equal(expected)
+    })
+  })
+
+  describe('Lint', () => {
+    it('should complain if no input file is supplied', async () => {
+      const { stdout, stderr } = await asyncExec('node cli.js lint')
+      const actual = {
+        stdout: stdout.split('\n'),
+        stderr: stderr.split('\n')
+      }
+      const expected = {
+        stderr: ['No files provided to lint.'],
+        stdout: ['']
       }
       expect(actual).to.deep.equal(expected)
     })
