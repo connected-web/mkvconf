@@ -1,10 +1,10 @@
 const NL = '\n'
 
 const matchers = [{
-  regex: /\[([A-z\d- ]+)\]/,
+  regex: /^\[([\w\d- ]+)\]/,
   func: createObjectGroup
 }, {
-  regex: /([A-z][A-z\d.]*)\s+(.*)/,
+  regex: /^([\w][\w\d.]*)\s+(.*)/,
   func: addKeyValuePair
 }, {
   regex: /\/\//,
