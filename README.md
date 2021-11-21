@@ -4,6 +4,53 @@ A custom configuration file format that maps to JSON; a more forgiving and less 
 
 This implementation of `mkvconf` is written in javascript, and uses `nodejs` and `npm`.
 
+The format allows for groups of objects to be quickly copy and pasted, with a forgiving minimalist format for building lists of objects with complex properties quickly.
+
+```
+// mkvconf.file
+[Star]
+name Sol
+equatorial.radius.min     695,700 km
+equatorial.radius.max     696,342 km
+equatorial.circumference  4.379×106 km
+flattening                9×10−6
+surface.area              6.09×1012 km²
+volume	                  1.41×1018 km³
+mass                      1.9885×1030 kg
+composition.Hydrogen      73.46%
+composition.Helium        24.85%
+composition.Oxygen        0.77%
+composition.Carbon        0.29%
+composition.Iron          0.16%
+composition.Neon          0.12%
+composition.Nitrogen      0.09%
+composition.Silicon       0.07%
+composition.Magnesium     0.05%
+composition.Sulphur	      0.04%
+
+[Planet]
+name            Earth
+distance.to.sun 149.6 million km
+planet.radius   6,371 km
+surface.area    510.1 million km²
+land.area       148.9 million km²
+mass            5.972 × 10^24 kg
+
+[Planet]
+name            Mercury
+distance.to.sun 57.91 million km
+orbital.period  88 days
+planet.radius   2,439.7 km
+surface.area    74.8 million km²
+length.of.day   58d 15h 30m
+mass            3.285 × 10^23 kg
+density         5.43 g/cm³
+```
+
+## Command line tool
+
+If this file format is interesting to you; you may want to read about the [mkvconf command line tool](./CLI.md).
+
 ## Development Usage
 
 Install the local package:
