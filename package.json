@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "A custom configuration file format that maps to JSON; a more forgiving and less boiler plate way of writing data for systems.",
   "main": "main.js",
+  "bin": {
+    "mkvconf": "cli.js"
+  },
   "scripts": {
     "test": "standard --env mocha && mocha",
     "lint": "standard --fix --env mocha"
