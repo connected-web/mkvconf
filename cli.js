@@ -10,7 +10,7 @@ async function processArgs () {
   try {
     await run({ command, args, cwd })
   } catch (ex) {
-    report('Unable to complete;', ex.message, ex)
+    report('Unable to complete;', ex.message)
   }
 }
 

@@ -28,5 +28,14 @@ mkvconf help
 Returns:
 ```
 [mkvconf] v1.0.0 Help
-  help : Display a list of available commands
+help          : Display a list of available commands
+lint file     : Check an input file for linting errors
+     --fix    : Fix errors inline, replaces input file after read
+     --suffix : Generate a new linted file, with the ".linted" suffix
+```
+
+### Lint
+
+```
+mkvconf lint example.file
 ```
