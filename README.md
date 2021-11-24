@@ -214,6 +214,4 @@ Lines that do not match a supported regex will be stored in order with the comme
 
 ## Wishlist
 
-- Command line wrapper
-- `npx` instructions
-- Linter - parse, validate, format, write
+- Add json mode to mkvconf CLI tool
