@@ -13,13 +13,12 @@ async function lintFile (file, cwd, fixErrors, saveWithSuffix) {
     if (fixErrors) {
       await asyncFs.writeFile(file, result, 'utf8')
       console.log(`Linted ${file} OK (${result.length} bytes, ${resultLines.length} lines).`)
+    } else if (saveWithSuffix) {
+      await asyncFs.writeFile(`${file}.linted`, result, 'utf8')
+      console.log(`Linted ${file} saved as ${file}.linted OK (${result.length} bytes, ${resultLines.length} lines).`)
     } else {
       console.error(`Imperfections found in ${file}; (${result.length} bytes, ${resultLines.length} lines) - can be fixed with the --fix flag`)
     }
-  }
-
-  if (saveWithSuffix) {
-    await asyncFs.writeFile(`${file}.linted`, result, 'utf8')
   }
 
   return {

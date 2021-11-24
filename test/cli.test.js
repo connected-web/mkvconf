@@ -100,8 +100,26 @@ describe('Command Line Interface', () => {
       expect(beforeFile.split(NL)).to.not.deep.equal(afterFile.split(NL))
     })
 
+    it('should lint and suffix a fixture with bad formatting', async () => {
+      await asyncExec('cp test/fixtures/item.file test/fixtures/temp.file')
+      const beforeFile = loadFixture('temp.file')
+      const { stdout, stderr } = await asyncExec('node cli.js lint test/fixtures/temp.file --suffix')
+      const actual = {
+        stdout: stdout.split(NL),
+        stderr: stderr.split(NL)
+      }
+      const expected = {
+        stderr: [''],
+        stdout: ['Linted test/fixtures/temp.file saved as test/fixtures/temp.file.linted OK (174 bytes, 15 lines).']
+      }
+      const afterFile = loadFixture('temp.file.linted')
+      expect(actual).to.deep.equal(expected)
+      expect(beforeFile.split(NL)).to.not.deep.equal(afterFile.split(NL))
+    })
+
     after(async () => {
       await asyncExec('rm -f test/fixtures/temp.file')
+      await asyncExec('rm -f test/fixtures/temp.file.linted')
     })
   })
 })
