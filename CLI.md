@@ -45,7 +45,7 @@ Returns:
 Imperfections found in test/fixtures/item.file; (174 bytes, 15 lines) - can be fixed with the --fix flag
 ```
 
-### Lint with --fix
+### Lint with --fix
 
 ```
 mkvconf lint test/fixtures/item.file --fix
@@ -56,7 +56,7 @@ Returns:
 Linted test/fixtures/item.file OK (174 bytes, 15 lines).
 ```
 
-### Lint with --suffix
+### Lint with --suffix
 
 ```
 mkvconf lint test/fixtures/item.file --suffix
