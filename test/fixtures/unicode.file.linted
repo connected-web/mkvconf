@@ -1,0 +1,14 @@
+// Unicode support, but only in the right places
+// Definitely Greek characters
+[Α Β Γ Δ	Ε	Ζ	Η	Θ	Ι	Κ	Λ	Μ Ν	Ξ	Ο	Π	Ρ	Σ	Τ	Υ	Φ	Χ	Ψ Ω	Ϊ	Ϋ	ά	έ	ή	ί	ΰ	α	β	γ	δ ε	ζ	η	θ	ι	κ	λ	μ	ν	ξ	ο	π ρ	ς	σ	τ	υ	φ	χ	ψ	ω]
+// Greek characters not allowed in group object key
+[ΑΒ]
+ΚνΡ ναιμε with invalid key
+// 😍 not a valid object key
+[😍]
+
+[Valid Object Key]
+kvp.bracket  [value with brackets]
+kvp.greek    ναιμε greek characters with valid key
+kvp.smiles   😀	😁	😂	😃	😄	😅	😆	😇	😈	😉	😊	😋	😌	😍	😎	😏
+

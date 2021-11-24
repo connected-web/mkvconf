@@ -1,7 +1,7 @@
 const asyncFs = require('fs/promises')
-const mkvconf = require('../parse')
+const mkvconf = require('../../')
 
-async function lintFile (file, cwd, fixErrors) {
+async function lintFile (file, cwd, fixErrors, saveWithSuffix) {
   const body = await asyncFs.readFile(file, 'utf8')
   const data = mkvconf.parse(body)
   const result = mkvconf.format(data)
@@ -12,7 +12,9 @@ async function lintFile (file, cwd, fixErrors) {
     }
   }
 
-  return asyncFs.writeFile(`${file}.linted`, result, 'utf8')
+  if (saveWithSuffix) {
+    await asyncFs.writeFile(`${file}.linted`, result, 'utf8')
+  }
 }
 
 module.exports = lintFile

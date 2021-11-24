@@ -1,5 +1,5 @@
-const { version } = require('../package.json')
-const commands = require('./commands')
+const { version } = require('../../package.json')
+const commands = require('../commands')
 
 async function help ({ args, cwd }) {
   console.log(`[mkvconf] v${version} Help`)

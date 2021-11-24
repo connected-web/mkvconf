@@ -1,3 +1,4 @@
 const parse = require('./src/parse')
+const format = require('./src/format')
 
-module.exports = { parse }
+module.exports = { parse, format }

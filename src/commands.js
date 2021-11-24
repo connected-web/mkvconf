@@ -1,6 +1,6 @@
 module.exports = () => {
-  const help = require('./help')
-  const lint = require('./lint')
+  const help = require('./commands/help')
+  const lint = require('./commands/lint')
 
   return {
     help,

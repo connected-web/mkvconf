@@ -63,5 +63,18 @@ describe('Command Line Interface', () => {
       }
       expect(actual).to.deep.equal(expected)
     })
+
+    it('should lint a fixture with bad formatting', async () => {
+      const { stdout, stderr } = await asyncExec('node cli.js lint test/fixtures/item.file')
+      const actual = {
+        stdout: stdout.split('\n'),
+        stderr: stderr.split('\n')
+      }
+      const expected = {
+        stderr: ['Imperfections found in test/fixtures/item.file; can be fixed with the --fix flag'],
+        stdout: ['']
+      }
+      expect(actual).to.deep.equal(expected)
+    })
   })
 })
