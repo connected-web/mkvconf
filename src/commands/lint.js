@@ -23,6 +23,10 @@ async function lint ({ args, cwd }) {
     console.error('No files provided to lint.')
   }
 }
-lint.description = 'lint [--fix] [file] : Check an input file for linting errors'
+lint.description = [
+  'lint file     : Check an input file for linting errors',
+  '     --fix    : Fix errors inline, replaces input file after read',
+  '     --suffix : Generate a new linted file, with the ".linted" suffix'
+].join('\n')
 
 module.exports = lint

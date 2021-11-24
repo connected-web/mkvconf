@@ -59,15 +59,39 @@ Install the local package:
 npm install mkvconf
 ```
 
-In a javascript project:
+### Deserialising data (parse)
+
+To load and parse data:
 
 ```js
-import mkvconf from 'mkvconf'
-import fs from 'fs'
+const mkvconf = require('mkvconf')
+const fs = require('fs')
 
 const body = fs.readFileSync('item.file', 'utf8')
 const data = mkconf.parse(body)
 console.log(data)
+```
+
+### Serializing data (format)
+
+To produce a `mkvconf` file from data:
+
+```js
+const mkvconf = require('mkvconf')
+const data = {
+  Fruits: [{
+    name: 'Apple',
+    cost: '£0.34/kg'
+  }, {
+    name: 'Orange'
+    cost: '£0.42/kg'
+  }, {
+    name: 'Banana',
+    cost: '$0.65/kg'
+  }]
+}
+const text = mkvconf.format(data)
+console.log(text)
 ```
 
 ## Item example

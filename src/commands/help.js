@@ -4,12 +4,14 @@ const commands = require('../commands')
 async function help ({ args, cwd }) {
   console.log(`[mkvconf] v${version} Help`)
   const info = Object.entries(commands()).map(([key, { description }]) => {
-    return `  ${description}`
+    return `${description}`
   })
   info.forEach(line => {
     console.log(line)
   })
 }
-help.description = 'help : Display a list of available commands'
+help.description = [
+  'help          : Display a list of available commands'
+].join('\n')
 
 module.exports = help
