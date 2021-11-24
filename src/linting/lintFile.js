@@ -11,6 +11,7 @@ async function lintFile (file, cwd, fixErrors, saveWithSuffix) {
 
   if (requiredLinting) {
     if (fixErrors) {
+      await asyncFs.writeFile(file, result, 'utf8')
       console.log(`Linted ${file} OK (${result.length} bytes, ${resultLines.length} lines).`)
     } else {
       console.error(`Imperfections found in ${file}; (${result.length} bytes, ${resultLines.length} lines) - can be fixed with the --fix flag`)

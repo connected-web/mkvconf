@@ -1,6 +1,8 @@
 const { expect } = require('chai')
 const asyncExec = require('./helpers/asyncExec')
 const { version } = require('../package.json')
+const loadFixture = require('./helpers/loadFixture')
+const NL = '\n'
 
 const standardHelp = [
   `[mkvconf] v${version} Help`,
@@ -15,8 +17,8 @@ describe('Command Line Interface', () => {
     it('should display help if no commands are provided', async () => {
       const { stdout, stderr } = await asyncExec('node cli.js')
       const actual = {
-        stdout: stdout.split('\n'),
-        stderr: stderr.split('\n')
+        stdout: stdout.split(NL),
+        stderr: stderr.split(NL)
       }
       const expected = {
         stderr: ['No command supplied; please read the help below:'],
@@ -28,8 +30,8 @@ describe('Command Line Interface', () => {
     it('should display help if an invalid command is provided', async () => {
       const { stdout, stderr } = await asyncExec('node cli.js invalid-command')
       const actual = {
-        stdout: stdout.split('\n'),
-        stderr: stderr.split('\n')
+        stdout: stdout.split(NL),
+        stderr: stderr.split(NL)
       }
       const expected = {
         stderr: ['The command "invalid-command" is not supported; please read the help below:'],
@@ -41,8 +43,8 @@ describe('Command Line Interface', () => {
     it('should display help if the help command is provided', async () => {
       const { stdout, stderr } = await asyncExec('node cli.js help')
       const actual = {
-        stdout: stdout.split('\n'),
-        stderr: stderr.split('\n')
+        stdout: stdout.split(NL),
+        stderr: stderr.split(NL)
       }
       const expected = {
         stderr: [''],
@@ -58,7 +60,7 @@ describe('Command Line Interface', () => {
       try {
         await asyncExec('node cli.js lint')
       } catch (ex) {
-        actual = ex.message.trim().split('\n')
+        actual = ex.message.trim().split(NL)
       }
       const expected = [
         'Command failed: node cli.js lint',
@@ -72,7 +74,7 @@ describe('Command Line Interface', () => {
       try {
         await asyncExec('node cli.js lint test/fixtures/item.file')
       } catch (ex) {
-        actual = ex.message.trim().split('\n')
+        actual = ex.message.trim().split(NL)
       }
       const expected = [
         'Command failed: node cli.js lint test/fixtures/item.file',
@@ -83,16 +85,19 @@ describe('Command Line Interface', () => {
 
     it('should lint and fix a fixture with bad formatting', async () => {
       await asyncExec('cp test/fixtures/item.file test/fixtures/temp.file')
+      const beforeFile = loadFixture('temp.file')
       const { stdout, stderr } = await asyncExec('node cli.js lint test/fixtures/temp.file --fix')
       const actual = {
-        stdout: stdout.split('\n'),
-        stderr: stderr.split('\n')
+        stdout: stdout.split(NL),
+        stderr: stderr.split(NL)
       }
       const expected = {
         stderr: [''],
         stdout: ['Linted test/fixtures/temp.file OK (174 bytes, 15 lines).']
       }
+      const afterFile = loadFixture('temp.file')
       expect(actual).to.deep.equal(expected)
+      expect(beforeFile.split(NL)).to.not.deep.equal(afterFile.split(NL))
     })
 
     after(async () => {
