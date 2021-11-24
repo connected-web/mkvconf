@@ -18,9 +18,23 @@ async function lint ({ args, cwd }) {
   const files = filterFiles(args)
   if (files.length > 0) {
     const work = files.map(file => lintFile(file, cwd, fixErrors, saveWithSuffix))
-    return Promise.all(work)
+    try {
+      const results = await Promise.all(work)
+      const filesRequiredLinting = results.filter(r => r.requiredLinting).length > 0
+      if (fixErrors || saveWithSuffix) {
+        process.exit(0)
+      } else if (filesRequiredLinting) {
+        process.exit(1)
+      } else {
+        process.exit(0)
+      }
+    } catch (ex) {
+      console.error(ex)
+      process.exit(3)
+    }
   } else {
     console.error('No files provided to lint.')
+    process.exit(4)
   }
 }
 lint.description = [

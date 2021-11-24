@@ -54,28 +54,30 @@ describe('Command Line Interface', () => {
 
   describe('Lint', () => {
     it('should complain if no input file is supplied', async () => {
-      const { stdout, stderr } = await asyncExec('node cli.js lint')
-      const actual = {
-        stdout: stdout.split('\n'),
-        stderr: stderr.split('\n')
+      let actual
+      try {
+        await asyncExec('node cli.js lint')
+      } catch (ex) {
+        actual = ex.message.trim().split('\n')
       }
-      const expected = {
-        stderr: ['No files provided to lint.'],
-        stdout: ['']
-      }
+      const expected = [
+        'Command failed: node cli.js lint',
+        'No files provided to lint.'
+      ]
       expect(actual).to.deep.equal(expected)
     })
 
     it('should lint a fixture with bad formatting', async () => {
-      const { stdout, stderr } = await asyncExec('node cli.js lint test/fixtures/item.file')
-      const actual = {
-        stdout: stdout.split('\n'),
-        stderr: stderr.split('\n')
+      let actual
+      try {
+        await asyncExec('node cli.js lint test/fixtures/item.file')
+      } catch (ex) {
+        actual = ex.message.trim().split('\n')
       }
-      const expected = {
-        stderr: ['Imperfections found in test/fixtures/item.file; (174 bytes, 15 lines) - can be fixed with the --fix flag'],
-        stdout: ['']
-      }
+      const expected = [
+        'Command failed: node cli.js lint test/fixtures/item.file',
+        'Imperfections found in test/fixtures/item.file; (174 bytes, 15 lines) - can be fixed with the --fix flag'
+      ]
       expect(actual).to.deep.equal(expected)
     })
 

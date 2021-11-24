@@ -7,7 +7,9 @@ async function lintFile (file, cwd, fixErrors, saveWithSuffix) {
   const result = mkvconf.format(sourceData)
   const resultLines = result.split('\n')
 
-  if (result.length !== source.length) {
+  const requiredLinting = result.length !== source.length
+
+  if (requiredLinting) {
     if (fixErrors) {
       console.log(`Linted ${file} OK (${result.length} bytes, ${resultLines.length} lines).`)
     } else {
@@ -17,6 +19,14 @@ async function lintFile (file, cwd, fixErrors, saveWithSuffix) {
 
   if (saveWithSuffix) {
     await asyncFs.writeFile(`${file}.linted`, result, 'utf8')
+  }
+
+  return {
+    requiredLinting,
+    saveWithSuffix,
+    source,
+    sourceData,
+    result
   }
 }
 
