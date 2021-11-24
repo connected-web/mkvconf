@@ -1,6 +1,6 @@
 {
   "name": "mkvconf",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A custom configuration file format that maps to JSON; a more forgiving and less boiler plate way of writing data for systems.",
   "main": "main.js",
   "bin": {
