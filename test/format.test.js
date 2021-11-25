@@ -2,7 +2,7 @@ const { expect } = require('chai')
 const loadFixture = require('./helpers/loadFixture')
 const mkvconf = require('../')
 
-describe('Format', () => {
+describe('Library - Format', () => {
   it('should correctly format the fruit fixture', () => {
     const input = loadFixture('fruit.file')
     const expected = loadFixture('fruit.file.linted')
