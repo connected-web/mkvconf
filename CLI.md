@@ -27,11 +27,12 @@ mkvconf help
 
 Returns:
 ```
-[mkvconf] v1.0.0 Help
+[mkvconf] v1.1.0 Help
 help          : Display a list of available commands
 lint file     : Check an input file for linting errors
      --fix    : Fix errors inline, replaces input file after read
      --suffix : Generate a new linted file, with the ".linted" suffix
+json file     : Convert the input file into json with a .json suffix
 ```
 
 ### Lint
@@ -67,4 +68,44 @@ Returns:
 Linted test/fixtures/item.file OK (174 bytes, 15 lines).
 ```
 
+### Convert file to JSON
 
+```
+mkvconf json test/fixtures/item.file
+```
+
+Returns:
+```
+Source test/fixtures/item.file saved as test/fixtures/item.file.json OK (358 bytes, 27 lines).
+```
+
+And creates `item.file.json`:
+```json
+{
+  "Item": [
+    {
+      "id": "item-1",
+      "meta": {
+        "name": "Item One"
+      },
+      "position": {
+        "x": 124,
+        "y": 523
+      }
+    },
+    {
+      "id": "item-2",
+      "meta": {
+        "name": "Item Two"
+      },
+      "position": {
+        "x": 224,
+        "y": 323
+      }
+    }
+  ],
+  "comments": [
+    "// item.file"
+  ]
+}
+```

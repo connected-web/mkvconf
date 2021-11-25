@@ -212,6 +212,26 @@ Empty lines are ignored; i.e. anything line that when trimmed has a length of `0
 
 Lines that do not match a supported regex will be stored in order with the comments. Maybe you can abuse this to store extra data, but your mileage may vary.
 
+## Release notes
+
+### v1.1.0
+
+- Added json command to CLI tool
+
+### v1.0.1
+
+- Initial release
+- Documentation for file format
+- Added javacsript `.parse` API to read file format to into `js` object/lists
+- Added javascript `.format` API to format JSON as `mkvconf`
+- Added command line support using `npx mkvconf` and `npm install --global mkvconf`
+- Added lint commmand to CLI tool
+- Added lint --fix flag to CLI tool
+- Added lint --suffix flag to CLI tool
+
 ## Wishlist
 
-- Add json mode to mkvconf CLI tool
+- Add tests around multiple file support to CLI
+- Consider using `glob` to accept file paths e.g. `conf/**/*.file` when linting
+- Consider specifying output path for converted files
+- Consider JSON output to `stdout` for single file conversions

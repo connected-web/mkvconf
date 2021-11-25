@@ -1,0 +1,27 @@
+{
+  "Item": [
+    {
+      "id": "item-1",
+      "meta": {
+        "name": "Item One"
+      },
+      "position": {
+        "x": 124,
+        "y": 523
+      }
+    },
+    {
+      "id": "item-2",
+      "meta": {
+        "name": "Item Two"
+      },
+      "position": {
+        "x": 224,
+        "y": 323
+      }
+    }
+  ],
+  "comments": [
+    "// item.file"
+  ]
+}
