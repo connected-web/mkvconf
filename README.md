@@ -215,6 +215,10 @@ Lines that do not match a supported regex will be stored in order with the comme
 
 ## Release notes
 
+### v1.2.0
+
+- Add `fast-glob` support as a dependency to fully resolve glob patterns
+
 ### v1.1.1
 
 - Document support for glob matchers e.g. `mkvconf lint **/*.file --fix`

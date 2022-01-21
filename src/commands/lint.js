@@ -1,3 +1,4 @@
+const find = require('fast-glob')
 const lintFile = require('../linting/lintFile')
 
 function fixMode (args) {
@@ -16,12 +17,18 @@ function sortFilelistByName (a, b) {
   return (a + '').localeCompare(b + '')
 }
 
+async function findFiles (files) {
+  const foundFiles = await find(files, { dot: true })
+  return foundFiles.sort(sortFilelistByName)
+}
+
 async function lint ({ args, cwd }) {
   const fixErrors = fixMode(args)
   const saveWithSuffix = suffixMode(args)
-  const files = filterFiles(args).sort(sortFilelistByName)
+  const files = filterFiles(args)
+  const expandedFilelist = await findFiles(files)
   if (files.length > 0) {
-    const work = files.map(file => lintFile(file, cwd, fixErrors, saveWithSuffix))
+    const work = expandedFilelist.map(file => lintFile(file, cwd, fixErrors, saveWithSuffix))
     try {
       const results = await Promise.all(work)
       results.forEach(result => {
