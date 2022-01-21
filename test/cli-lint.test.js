@@ -66,6 +66,23 @@ describe('Command Line Interface - Lint', () => {
     expect(beforeFile.split(NL)).to.not.deep.equal(afterFile.split(NL))
   })
 
+  it('should lint multiple fixture with bad formatting', async () => {
+    let actual
+    try {
+      await asyncExec('node cli.js lint test/**/*.file')
+    } catch (ex) {
+      actual = ex.message.trim().split(NL)
+    }
+    const expected = [
+      'Command failed: node cli.js lint test/**/*.file',
+      'Imperfections found in test/fixtures/item.file; (174 bytes, 15 lines) - can be fixed with the --fix flag',
+      'Imperfections found in test/fixtures/mixed.file; (1126 bytes, 51 lines) - can be fixed with the --fix flag',
+      'Imperfections found in test/fixtures/temp.file; (174 bytes, 15 lines) - can be fixed with the --fix flag',
+      'Imperfections found in test/fixtures/unicode.file; (480 bytes, 15 lines) - can be fixed with the --fix flag'
+    ]
+    expect(actual).to.deep.equal(expected)
+  })
+
   after(async () => {
     await asyncExec('rm -f test/fixtures/temp.file')
     await asyncExec('rm -f test/fixtures/temp.file.linted')

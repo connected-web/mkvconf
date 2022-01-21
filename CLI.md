@@ -27,7 +27,7 @@ mkvconf help
 
 Returns:
 ```
-[mkvconf] v1.1.0 Help
+[mkvconf] v1.1.1 Help
 help          : Display a list of available commands
 lint file     : Check an input file for linting errors
      --fix    : Fix errors inline, replaces input file after read
@@ -44,6 +44,20 @@ mkvconf lint test/fixtures/item.file
 Returns:
 ```
 Imperfections found in test/fixtures/item.file; (174 bytes, 15 lines) - can be fixed with the --fix flag
+```
+
+You should also be able to use glob patterns to lint multiple files, e.g.:
+
+```
+mkvconf lint **/*.file
+```
+
+Returns:
+
+```
+Imperfections found in test/fixtures/item.file; (174 bytes, 15 lines) - can be fixed with the --fix flag
+Imperfections found in test/fixtures/mixed.file; (1126 bytes, 51 lines) - can be fixed with the --fix flag
+Imperfections found in test/fixtures/unicode.file; (480 bytes, 15 lines) - can be fixed with the --fix flag
 ```
 
 ### Lint with --fix

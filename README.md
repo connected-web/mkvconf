@@ -60,7 +60,7 @@ Install the local package:
 npm install mkvconf
 ```
 
-### Deserialising data (parse)
+### Deserialising data (parse)
 
 To load and parse data:
 
@@ -215,6 +215,12 @@ Lines that do not match a supported regex will be stored in order with the comme
 
 ## Release notes
 
+### v1.1.1
+
+- Document support for glob matchers e.g. `mkvconf lint **/*.file --fix`
+- Add tests around multiple file support to CLI
+- Sort list of files to ensure consistency of execution
+
 ### v1.1.0
 
 - Added json command to CLI tool
@@ -232,7 +238,5 @@ Lines that do not match a supported regex will be stored in order with the comme
 
 ## Wishlist
 
-- Add tests around multiple file support to CLI
-- Consider using `glob` to accept file paths e.g. `conf/**/*.file` when linting
 - Consider specifying output path for converted files
 - Consider JSON output to `stdout` for single file conversions

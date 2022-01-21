@@ -9,15 +9,18 @@ async function lintFile (file, cwd, fixErrors, saveWithSuffix) {
 
   const requiredLinting = result.length !== source.length
 
+  const logs = []
+  const errors = []
+
   if (requiredLinting) {
     if (fixErrors) {
       await asyncFs.writeFile(file, result, 'utf8')
-      console.log(`Linted ${file} OK (${result.length} bytes, ${resultLines.length} lines).`)
+      logs.push(`Linted ${file} OK (${result.length} bytes, ${resultLines.length} lines).`)
     } else if (saveWithSuffix) {
       await asyncFs.writeFile(`${file}.linted`, result, 'utf8')
-      console.log(`Linted ${file} saved as ${file}.linted OK (${result.length} bytes, ${resultLines.length} lines).`)
+      logs.push(`Linted ${file} saved as ${file}.linted OK (${result.length} bytes, ${resultLines.length} lines).`)
     } else {
-      console.error(`Imperfections found in ${file}; (${result.length} bytes, ${resultLines.length} lines) - can be fixed with the --fix flag`)
+      errors.push(`Imperfections found in ${file}; (${result.length} bytes, ${resultLines.length} lines) - can be fixed with the --fix flag`)
     }
   }
 
@@ -26,7 +29,9 @@ async function lintFile (file, cwd, fixErrors, saveWithSuffix) {
     saveWithSuffix,
     source,
     sourceData,
-    result
+    result,
+    logs,
+    errors
   }
 }
 

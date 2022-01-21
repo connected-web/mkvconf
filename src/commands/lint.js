@@ -12,14 +12,22 @@ function filterFiles (args) {
   return args.filter(arg => arg.charAt(0) !== '-')
 }
 
+function sortFilelistByName (a, b) {
+  return (a + '').localeCompare(b + '')
+}
+
 async function lint ({ args, cwd }) {
   const fixErrors = fixMode(args)
   const saveWithSuffix = suffixMode(args)
-  const files = filterFiles(args)
+  const files = filterFiles(args).sort(sortFilelistByName)
   if (files.length > 0) {
     const work = files.map(file => lintFile(file, cwd, fixErrors, saveWithSuffix))
     try {
       const results = await Promise.all(work)
+      results.forEach(result => {
+        result.logs.forEach(line => console.log(line))
+        result.errors.forEach(line => console.error(line))
+      })
       const filesRequiredLinting = results.filter(r => r.requiredLinting).length > 0
       if (fixErrors || saveWithSuffix) {
         process.exit(0)
